@@ -10,7 +10,8 @@ Dotenv.load
 # result_limit = INT
 
 base_url = URI.parse("http://comicvine.gamespot.com")
-url = URI.parse("http://comicvine.gamespot.com/api/issues/?api_key=#{ENV['COMICVINE_KEY']}&format=json&filter=cover_date:2015-08-12&sort=name:asc&field_list=name")
+url = URI.parse("http://comicvine.gamespot.com/api/publishers/?api_key=#{ENV['COMICVINE_KEY']}&format=json")
+#&filter=cover_date:2015-08-12&sort=name:asc&field_list=name"
 resp = Net::HTTP.get_response(url)
 result = JSON.parse(resp.body)
 
