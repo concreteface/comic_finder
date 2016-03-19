@@ -19,3 +19,10 @@ get '/' do
   @title = "Hello World"
   erb :index
 end
+
+def find_titles(date)
+
+end
+
+def find_hash(date)
+end

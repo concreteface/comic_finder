@@ -5,6 +5,7 @@ gem "sinatra"
 gem "dotenv"
 gem "sinatra-activerecord"
 gem 'sinatra-contrib'
+gem 'comic_vine'
 
 group :development, :test do
   gem "capybara"
