@@ -13,27 +13,29 @@ class ComicList
 
   def find_titles
     titles = []
-    @parsed_page.css('.title').each do |t|
-      titles << t
+    @parsed_page.xpath("//td[@class='title']/a/text()").each do |title|
+      titles << title
     end
-    joined = titles.join('-').split('-')
-    joined.shift
-    joined
+    titles
   end
 
-  def cover_title
-    h = {}
-    @parsed_page.css('.title').xpath('//a[@href]').each do |link|
-      h[link.text.strip] = link['href']
+  def find_urls
+    urls = []
+    @parsed_page.xpath("//td[@class='title']/a/@href").each do |url|
+      urls << url
     end
-    h.each do |k, v|
-      if find_titles.include?(k)
-        puts "Key: #{k}, Value: #{v}"
-      end
-    end
+    urls
   end
 
+  def cover_url(half_url)
+    cover_page = HTTParty.get("#{@base_url}#{half_url}")
+    parsed_cover = Nokogiri::HTML(cover_page)
+    cover_half = parsed_cover.css('img[@title]/@src')
+    "#{@base_url}#{cover_half}"
+  end
 end
 
-cl = ComicList.new('feb 17 2016')
-cl.cover_title
+# cl = ComicList.new('mar 16 2016')
+# # ComicList.cover_url('/comic-books/reviews/vertigo/clean-room/5')
+# puts cl.find_titles[32]
+# puts cl.cover_url(cl.find_urls[32])
