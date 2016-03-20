@@ -1,6 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Example:
-#
-#   Person.create(first_name: 'Eric', last_name: 'Kelly')
+# 60.times do |i|
+# 	Issue.create(title: "test#{i}", release_date: Time.now, image_url: "www#{i}.yo.com", description: 'blah blah blah', writers: 'Yacob', publisher: "#{i} studio", artist: 'jeff')
+
+# end

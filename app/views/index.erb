@@ -1,23 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Comic Releases</title>
-  </head>
-  <body>
+<% @title='Comic Releases' %>
+<head>
+  <title></title>
+</head>
+<body>
   <h2>Comic Releases</h2>
-    <form action='/issues' method='get'>
-      <label for='date'>Enter the Date of a Wednesday</label>
-      <input type='text' name='date' id='date'>
-      <button type='submit' class='button'>Submit</button>
-    </form>
-    <hr>
+  <form action='/issues' method='get' class='small-8 medium-8 large-8 columns'>
+    <label for='date'>Enter the Date of a Wednesday</label>
+    <input type='text' name='date' id='date'>
+    <button type='submit' class='button small round'>Submit</button>
+  </form>
+  <hr>
+  <div data-alert class="alert-box">
     <%= @message %>
-    <% if !@issues.nil? %>
-      <ul>
-        <% @issues.each_with_index do |issue, i| %>
-          <li><a href="/issues/<%= issue.id %>"><%= issue.title %></a></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </body>
-</html>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <% if !@issues.nil? %>
+    <p> 
+      <div  class='small-12 medium-12 large-12 columns'>
+        <table class='hover'>
+          <thead>
+            <tr>
+              <th width="200">Title</th>
+              <th width="200">Publisher</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @issues.each do |issue| %>
+              <tr>
+                <td><a href="/issues/<%= issue.id %>"><%= issue.title %></a></td>
+                <td><%= issue.publisher %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </p>
+  <% end %>
+</body>     

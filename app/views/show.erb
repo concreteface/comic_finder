@@ -1,10 +1,27 @@
-<!DOCTYPE html>
+<% @title = @issue.title %>
 <html>
   <head>
     <title></title>
   </head>
   <body>
-  <h3><%= @issue.title %></h3>
-  <p><img src="<%= @issue.image_url %>" height="100" width="100"></p>
-  </body>
-</html>
+    <div class='large-12 small-12 medium-12'>
+      <h4><%= @issue.title %></h4>
+      <p><img src="<%= @issue.image_url %>"></p>
+      <dl>
+        <dt>Writer(s) </dt>
+        <dd><%= @issue.writers %></dd>
+      </dl>
+      <dl>
+        <dt>Artists(s)</dt>
+        <dd><%= @issue.artist %></dd>
+      </dl>
+      <dl>
+        <dt>Publisher </dt>
+        <dd><%= @issue.publisher %></dd>
+      </dl>
+      <dl>
+        <dt>Description</dt>
+        <dd><%= @issue.description %></dd>
+      </dl>
+    </div>
+  </html>
