@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Comic Releases</title>
   </head>
   <body>
-  
+    <form action='/issues' method='get'>
+      <label for='date'>Enter the Date of a Wednesday</label>
+      <input type='text' name='date' id='date'>
+      <button type='submit' class='button'>Submit</button>
+    </form>
+    <%= @message %>
+    <% if !@issues.nil? %>
+      <ul>
+        <% @issues.each_with_index do |issue, i| %>
+          <li><a href="/issues/<%= issue.id %>"><%= issue.title %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
   </body>
 </html>

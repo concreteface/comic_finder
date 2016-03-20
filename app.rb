@@ -16,13 +16,28 @@ Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
 end
 
 get '/' do
-  @title = "Hello World"
+  redirect '/issues'
+end
+
+get '/issues' do
+  @message = ''
+  if Date.parse(params[:date]).wednesday?
+    @list = ComicList.new(params[:date])
+    @titles = @list.find_titles
+    @urls = @list.find_urls
+    @message = 'Here are the comics released on the day you requested.'
+    @titles.each_with_index do |t, i|
+      Issue.create(title: t, image_url: @list.cover_url(@urls[i]))
+    end
+    @issues = Issue.all
+  else @message = "That's not a wednesday"
+  end
+  # binding.pry
+
   erb :index
 end
 
-def find_titles(date)
-
-end
-
-def find_hash(date)
+get '/issues/:id' do
+  @issue = Issue.find(params[:id])
+  erb :show
 end
