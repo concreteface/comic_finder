@@ -10,7 +10,6 @@ class ComicList
     @base_url='http://comicbookroundup.com'
     @page = HTTParty.get("#{@base_url}/comic-books/release-dates/#{@date}")
     @parsed_page = Nokogiri::HTML(@page)
-    # parse_pages
   end
 
   def find_titles
@@ -38,13 +37,11 @@ class ComicList
   end
 
   def cover_url(parsed_page)
-    # parsed_cover = Nokogiri::HTML(@pages[title_index])
     cover_half = parsed_page.css('img[@title]/@src')
     "#{@base_url}#{cover_half}"
   end
 
   def writer(parsed_page)
-    # parsed_writer = Nokogiri::HTML(@pages[title_index])
     if parsed_page.css("//[@class='left']/span[4]/a/text()").to_s == '' && parsed_page.css("//[@class='left']/span[3]/a/text()").to_s == ''
       writer = 'N/A'
     else writer = joiner(parsed_page.css("//[@class='left']/span[1]/a/text()"))
@@ -53,7 +50,6 @@ class ComicList
   end
 
   def artist(parsed_page)
-    # parsed_artist = Nokogiri::HTML(@pages[title_index])
     if parsed_page.css("//[@class='left']/span[4]/a/text()").to_s == ''
       if parsed_page.css("//[@class='left']/span[3]/a/text()").to_s == ''
         artist = 'N/A'
@@ -66,7 +62,6 @@ class ComicList
   end
 
   def publisher(parsed_page)
-    # parsed_publisher = Nokogiri::HTML(@pages[parsed_page])
     if parsed_page.css("//[@class='left']/span[4]/a/text()").to_s == ''
       if parsed_page.css("//[@class='left']/span[3]/a/text()").to_s == ''
         pub = parsed_page.css("//[@class='left']/span[1]/a/text()")
@@ -79,7 +74,6 @@ class ComicList
   end
 
   def description(parsed_page)
-    # parsed_description = Nokogiri::HTML(@pages[title_index])
     if parsed_page.css("//[@class='clear']/[@itemprop]/text()").length == 0
       desc = parsed_page.css("//[@class='clear']/text()")
     else desc = parsed_page.css("//[@class='clear']/[@itemprop]/text()")
