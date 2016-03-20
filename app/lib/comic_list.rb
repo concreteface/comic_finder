@@ -31,14 +31,14 @@ class ComicList
   def parse_pages
     @pages = []
     find_urls.each do |u|
-      @pages <<  Nokogiri::HTML(HTTParty.get("#{@base_url}#{u}"))
+      @pages <<  Nokogiri::HTML(HTTParty.get("#{@base_url}#{u.to_s.encode("ASCII", invalid: :replace, undef: :replace, replace: '')}"))
     end
     @pages
   end
 
   def cover_url(parsed_page)
     cover_half = parsed_page.css('img[@title]/@src')
-    "#{@base_url}#{cover_half}".encode('UTF-8')
+    "#{@base_url}#{cover_half}"
   end
 
   def writer(parsed_page)
@@ -84,7 +84,7 @@ class ComicList
   def joiner(nodeset)
     unjoined = []
     nodeset.each do |w|
-      unjoined << w.to_s.encode('UTF-8')
+      unjoined << w
     end
     joined = unjoined.join(', ')
   end
