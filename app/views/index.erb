@@ -4,11 +4,13 @@
     <title>Comic Releases</title>
   </head>
   <body>
+  <h2>Comic Releases</h2>
     <form action='/issues' method='get'>
       <label for='date'>Enter the Date of a Wednesday</label>
       <input type='text' name='date' id='date'>
       <button type='submit' class='button'>Submit</button>
     </form>
+    <hr>
     <%= @message %>
     <% if !@issues.nil? %>
       <ul>

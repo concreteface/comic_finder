@@ -20,20 +20,22 @@ get '/' do
 end
 
 get '/issues' do
-  @message = ''
-  if Date.parse(params[:date]).wednesday?
-    @list = ComicList.new(params[:date])
-    @titles = @list.find_titles
-    @urls = @list.find_urls
-    @message = 'Here are the comics released on the day you requested.'
-    @titles.each_with_index do |t, i|
-      Issue.create(title: t, image_url: @list.cover_url(@urls[i]))
+  if !params[:date].nil?
+    @message = ''
+    if Date.parse(params[:date]).wednesday?
+      @date = Date.parse(params[:date])
+      @list = ComicList.new(params[:date])
+      @titles = @list.find_titles
+      @urls = @list.find_urls
+      @message = 'Here are the comics released on the day you requested.'
+      @titles.each_with_index do |t, i|
+        Issue.create(title: t, image_url: @list.cover_url(@urls[i]), release_date: @date)
+      end
+      @issues = Issue.where(release_date: @date)
+      # binding.pry
+    else @message = "That's not a wednesday"
     end
-    @issues = Issue.all
-  else @message = "That's not a wednesday"
   end
-  # binding.pry
-
   erb :index
 end
 

@@ -9,6 +9,7 @@ gem 'sinatra-contrib'
 gem 'comic_vine'
 gem 'nokogiri'
 gem 'httparty'
+# gem 'activerecord-import'
 
 group :development, :test do
   gem "capybara"
