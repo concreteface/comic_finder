@@ -55,7 +55,7 @@ get '/issues' do
     get_titles_urls(@date)
     if Issue.group(:release_date).count[@date] != @titles.length
       @titles.each_with_index do |t, i|
-        Issue.create(title: t, image_url: @list.cover_url(@urls[i]), release_date: @date, writers: @list.writer(@urls[i]), artist: @list.artist(@urls[i]), description: @list.description(@urls[i]), publisher: @list.publisher(@urls[i]))
+        Issue.create(title: t, image_url: @list.cover_url(i), release_date: @date, writers: @list.writer(i), artist: @list.artist(i), description: @list.description(i), publisher: @list.publisher(i))
       end
     end
     @message = "Here are the comics released on #{@date.month}/#{@date.day}/#{@date.year}."

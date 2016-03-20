@@ -1,4 +1,4 @@
-require './app'
+require './server'
 require 'sinatra/activerecord/rake'
 
 # namespace :db do
