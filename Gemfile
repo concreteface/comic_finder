@@ -1,5 +1,7 @@
 source "https://rubygems.org/"
 
+ruby "2.2.3"
+
 gem "pg"
 gem 'rake'
 gem "sinatra"
@@ -9,7 +11,6 @@ gem 'sinatra-contrib'
 gem 'nokogiri'
 gem 'httparty'
 gem 'puma'
-gem 'sinatra'
 
 group :development, :test do
   gem "capybara"
