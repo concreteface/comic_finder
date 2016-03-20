@@ -6,10 +6,10 @@ gem "sinatra"
 gem "dotenv"
 gem "sinatra-activerecord"
 gem 'sinatra-contrib'
-gem 'comic_vine'
 gem 'nokogiri'
 gem 'httparty'
-# gem 'activerecord-import'
+gem 'puma'
+gem 'sinatra'
 
 group :development, :test do
   gem "capybara"

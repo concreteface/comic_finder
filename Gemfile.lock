@@ -26,8 +26,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.1)
-    comic_vine (0.1.4)
-      multi_json
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
@@ -55,6 +53,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.1.1)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -107,13 +106,13 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  comic_vine
   dotenv
   httparty
   launchy
   nokogiri
   pg
   pry
+  puma
   rake
   rspec
   sinatra
