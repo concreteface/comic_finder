@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
 require 'pg'
+require 'pry'
 require_relative 'app/lib/get_titles_urls'
 require_relative 'app/lib/validator'
 require_relative 'app/lib/order'
@@ -54,6 +55,7 @@ get '/issues' do
     @date = Date.parse(params[:date])
     get_titles_urls(@date)
     if Issue.group(:release_date).count[@date] != @titles.length
+      @list.parse_pages
       @titles.each_with_index do |t, i|
         Issue.create(title: t, image_url: @list.cover_url(i), release_date: @date, writers: @list.writer(i), artist: @list.artist(i), description: @list.description(i), publisher: @list.publisher(i))
       end

@@ -10,7 +10,7 @@ class ComicList
     @base_url='http://comicbookroundup.com'
     @page = HTTParty.get("#{@base_url}/comic-books/release-dates/#{@date}")
     @parsed_page = Nokogiri::HTML(@page)
-    parse_pages
+    # parse_pages
   end
 
   def find_titles
