@@ -8,12 +8,23 @@ include GetInfo
 include Validator
 include Order
 
-configure :development, :test do
-  require 'pry'
+set :views, File.join(File.dirname(__FILE__), "app", "views")
+
+configure :development do
+  set :db_config, { dbname: "comics_finder_development" }
 end
 
-configure do
-  set :views, 'app/views'
+configure :test do
+  set :db_config, { dbname: "comics_finder_test" }
+end
+
+def db_connection
+  begin
+    connection = PG.connect(Sinatra::Application.db_config)
+    yield(connection)
+    ensure
+    connection.close
+  end
 end
 
 Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
