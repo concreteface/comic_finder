@@ -38,7 +38,7 @@ class ComicList
 
   def cover_url(parsed_page)
     cover_half = parsed_page.css('img[@title]/@src')
-    "#{@base_url}#{cover_half}"
+    "#{@base_url}#{cover_half}".encode('UTF-8')
   end
 
   def writer(parsed_page)
@@ -78,13 +78,13 @@ class ComicList
       desc = parsed_page.css("//[@class='clear']/text()")
     else desc = parsed_page.css("//[@class='clear']/[@itemprop]/text()")
     end
-    desc
+    desc.to_s.encode('UTF-8', :invalid => :replace, :undef => :replace)
   end
 
   def joiner(nodeset)
     unjoined = []
     nodeset.each do |w|
-      unjoined << w
+      unjoined << w.to_s.encode('UTF-8')
     end
     joined = unjoined.join(', ')
   end
