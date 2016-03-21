@@ -92,9 +92,9 @@ class ComicList
 end
 
 
-date = Date.parse('jan 27 2016')
-# cl = ComicList.new("#{date.year}-#{date.month}-#{date.day}")
-cl = ComicList.new('jan 27 2016')
-# ComicList.cover_url('/comic-books/reviews/vertigo/clean-room/5')
-cl.parse_pages
-puts cl.artist(cl.pages[42])
+# date = Date.parse('jan 27 2016')
+# # cl = ComicList.new("#{date.year}-#{date.month}-#{date.day}")
+# cl = ComicList.new('jan 27 2016')
+# # ComicList.cover_url('/comic-books/reviews/vertigo/clean-room/5')
+# cl.parse_pages
+# puts cl.artist(cl.pages[42])
