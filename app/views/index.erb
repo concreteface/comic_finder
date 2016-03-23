@@ -4,10 +4,10 @@
 </head>
 <body>
   <h2>Comic Releases</h2>
-  <form action='/issues' method='get' class='small-8 medium-8 large-8 columns'>
+  <form action='/issues' method='get' class='small-12 medium-8 medium-centered large-6 large-centered columns'>
     <label for='date'>Enter a date (hint: make it a Wednesday)</label>
     <input type='text' name='date' id='date' value="<%= @date %>" placeholder='eg: 2016-03-02 or Mar 2nd, 2016'>
-    <div class="large-6 columns">
+    <div class="small-12 large-6 columns">
       <label>Order By</label>
       <input id="publisher" name='publisher' type="radio"><label for="publisher">Publisher</label>
       <input id="issue" name='issue' type="radio"><label for="issue">Issue Name</label>
