@@ -3,7 +3,7 @@ A simple app to find what was released on a given Wednesday. It's mainly geared 
 
 The search field accepts several date formats. It will let you know if it doesn't like the one you choose. There are a couple examples as placeholders. It's just using Ruby's `Date.parse` so anything that works there will work here.
 
-All the information this app supplies is being scraped from [Comicbook Round Up](http://comicbookroundup.com/) so head on over there for more information.
+All the information this app supplies is being scraped from [Comicbook Round Up](http://comicbookroundup.com/) so head on over there if you want to know more about comics.
 
 Future development plans include *a lot* of styling, and some sort of user system to keep track of pull lists and/or favorites.
 
