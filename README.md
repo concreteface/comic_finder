@@ -1,5 +1,5 @@
 # Comic Release Finder
----
+***
 [![Code Climate](https://codeclimate.com/github/concreteface/comic_finder/badges/gpa.svg)](https://codeclimate.com/github/concreteface/comic_finder)
 
 A simple app to find what was released on a given Wednesday. It's mainly geared toward recent releases, especially finding out what is/will be released in the current week.
