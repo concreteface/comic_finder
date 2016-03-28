@@ -3,45 +3,46 @@
   <title></title>
 </head>
 <body>
-  
   <form action='/issues' method='get' class='small-12 medium-8 medium-centered large-6 large-centered columns'>
     <label for='date'>Search By Release Date</label>
     <input type='text' name='date' id='date' value="<%= @date %>" placeholder='eg: 2016-03-02 or Mar 2nd, 2016'>
     <div class="small-12 large-6 columns">
-    <div class='selections'>
-      <label>Order By</label>
-      <input id="publisher" name='publisher' type="radio"><label for="publisher">Publisher</label>
-      <input id="issue" name='issue' type="radio"><label for="issue">Issue Name</label>
+      <div>
+        <label>Order By</label>
+        <input id="publisher" name='publisher' type="radio"><label for="publisher">Publisher</label>
+        <input id="issue" name='issue' type="radio"><label for="issue">Issue Name</label>
       </div>
     </div>
-    <div class='selections'>
-    <button type='submit' class='button small round'>Submit</button>
+    <div>
+      <button type='submit' class='button small'>Submit Date</button>
+      <button name="recent" type="submit" value="next" class='button small'>Next Week</button>
+      <button name="recent" type="submit" value="last" class='button small'>Last Week</button>
     </div>
   </form>
-<hr>
-<div class='centertext'>
-  <%= @message %>
-</div>
-<% if !@issues.nil? && !@issues.empty? %>
-  <p>
-    <div  class='small-12 medium-12 large-12 columns'>
-      <table class='hover'>
-        <thead>
-          <tr>
-            <th width="200">Title</th>
-            <th width="200">Publisher</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @issues.each do |issue| %>
+  <hr>
+  <div class='centertext'>
+    <%= @message %>
+  </div>
+  <% if !@issues.nil? && !@issues.empty? %>
+    <p>
+      <div  class='small-12 medium-12 large-12 columns'>
+        <table class='hover'>
+          <thead>
             <tr>
-              <td><a href="/issues/<%= issue.id %>"><%= issue.title %></a></td>
-              <td><%= issue.publisher %></td>
+              <th width="200">Title</th>
+              <th width="200">Publisher</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </p>
-<% end %>
+          </thead>
+          <tbody>
+            <% @issues.each do |issue| %>
+              <tr>
+                <td><a href="/issues/<%= issue.id %>"><%= issue.title %></a></td>
+                <td><%= issue.publisher %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </p>
+  <% end %>
 </body>     

@@ -50,4 +50,17 @@
 
 nav.top-bar {
 text-align:center;
+
+}
+
+.top-bar {
+	background-color: #C0C0C0;
+}
+
+.callout {
+	/*background-color: #0099FF;*/
+}
+
+.button {
+	display: inline-block;
 }
