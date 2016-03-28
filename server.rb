@@ -5,6 +5,7 @@ require 'pg'
 require_relative 'app/lib/get_titles_urls'
 require_relative 'app/lib/validator'
 require_relative 'app/lib/order'
+require_relative 'app/lib/issue_updater'
 include GetInfo
 include Validator
 include Order
@@ -34,7 +35,7 @@ def db_connection
   begin
     connection = PG.connect(settings.db_config)
     yield(connection)
-    ensure
+  ensure
     connection.close
   end
 end
@@ -54,9 +55,10 @@ get '/issues' do
     @date = Date.parse(params[:date])
     get_titles_urls(@date)
     if Issue.group(:release_date).count[@date] != @titles.length
-      @list.parse_pages
+      # @list.parse_pages
       @titles.each_with_index do |t, i|
-        Issue.create(title: t, image_url: @list.cover_url(@list.pages[i]), release_date: @date, writers: @list.writer(@list.pages[i]), artist: @list.artist(@list.pages[i]), description: @list.description(@list.pages[i]), publisher: @list.publisher(@list.pages[i]))
+        # Issue.create(title: t, image_url: @list.cover_url(@list.pages[i]), release_date: @date, writers: @list.writer(@list.pages[i]), artist: @list.artist(@list.pages[i]), description: @list.description(@list.pages[i]), publisher: @list.publisher(@list.pages[i]))
+        Issue.create(title: t, info_url: @list.find_urls[i], release_date: @date, publisher: @list.publishers[i])
       end
     end
     @message = "Here are the comics released on #{@date.month}/#{@date.day}/#{@date.year}."
@@ -68,5 +70,7 @@ end
 
 get '/issues/:id' do
   @issue = Issue.find(params[:id])
+  @updater = IssueUpdater.new(params[:id])
+  @issue.update(writers: @updater.writerupdate, artist: @updater.artistupdate, description: @updater.descriptionupdate, image_url: @updater.cover_urlupdate)
   erb :show
 end

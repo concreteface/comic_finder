@@ -5,7 +5,7 @@
 <body>
   
   <form action='/issues' method='get' class='small-12 medium-8 medium-centered large-6 large-centered columns'>
-    <label for='date'>Enter a date (hint: make it a Wednesday)</label>
+    <label for='date'>Search By Release Date</label>
     <input type='text' name='date' id='date' value="<%= @date %>" placeholder='eg: 2016-03-02 or Mar 2nd, 2016'>
     <div class="small-12 large-6 columns">
     <div class='selections'>
@@ -19,7 +19,7 @@
     </div>
   </form>
 <hr>
-<div >
+<div class='centertext'>
   <%= @message %>
 </div>
 <% if !@issues.nil? %>

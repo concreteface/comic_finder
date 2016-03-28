@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320130108) do
+ActiveRecord::Schema.define(version: 20160328142711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160320130108) do
     t.string "writers"
     t.string "artist"
     t.string "publisher"
+    t.string "info_url"
   end
 
   add_index "issues", ["title"], name: "index_issues_on_title", unique: true, using: :btree

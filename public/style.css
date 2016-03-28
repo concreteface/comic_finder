@@ -32,6 +32,22 @@
     -ms-transform: translate(-25%, -25%);
 }
 
-.selections {
+.inline {
     display: inline-block;
+}
+
+.righttext {
+    text-align: right;
+}
+
+.lefttext {
+    text-align: left;
+}
+
+.centertext {
+    text-align: center;
+}
+
+nav.top-bar {
+text-align:center;
 }
