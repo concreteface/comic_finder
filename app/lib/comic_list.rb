@@ -41,7 +41,14 @@ class ComicList
     end
     publishers = []
     withdash.each do |str|
-      publishers << str.gsub('-', ' ').split.map(&:capitalize).join(' ')
+      pre = str.gsub('-', ' ').split.map(&:capitalize).join(' ')
+      if pre == 'Dc Comics'
+        pre = 'DC Comics'
+      end
+      if pre == 'Idw Publishing'
+        pre = 'IDW Publishing'
+      end
+      publishers << pre
     end
     publishers
   end
