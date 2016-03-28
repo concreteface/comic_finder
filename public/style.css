@@ -14,7 +14,24 @@
 }
 
 #whitehead {
-color: red;
+    color: red;
+}
 
+#show {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /*
+    *  Where the magic happens
+    *  Centering method from CSS Tricks
+    *  http://css-tricks.com/centering-percentage-widthheight-elements/
+    */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-25%, -25%);
+    -o-transform: translate(-25%, -25%);
+    -ms-transform: translate(-25%, -25%);
+}
 
+.selections {
+    display: inline-block;
 }

@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <div id='bar'><head>
-      <title><%= @title %></title>
+  <title><%= @title %></title>
+  <head>
       <link rel="stylesheet" type="text/css" href="/foundation.min.css">
       <link rel="stylesheet" type="text/css" href="/style.css">
-    </head></div>
-  <div class='row'>
+    </head>
+
     <body>
+      <div class="small-12 columns top-bar">
+        <div class="small-12 columns top-bar-text">
+          <a href="/" id="title-link">
+            <h1 class="bar-text">Comics Releases</h1>
+          </a>
+        </div>
+      </div>
+       <div class='row'>
       <%= yield %>
+      </div>
     </body>
-  </div>
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 </html>
