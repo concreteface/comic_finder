@@ -41,7 +41,8 @@ CREATE TABLE issues (
     release_date date,
     writers character varying,
     artist character varying,
-    publisher character varying
+    publisher character varying,
+    info_url character varying
 );
 
 
