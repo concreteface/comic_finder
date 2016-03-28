@@ -52,7 +52,7 @@ class ComicList
     end
     publishers
   end
-
+ 
 end
 
 
