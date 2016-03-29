@@ -12,7 +12,7 @@ attr_reader :writerupdate, :artistupdate, :publisherupdate, :descriptionupdate, 
   end
 
   def cover_url(parsed_page)
-    cover_half = parsed_page.css('img[@title]/@src')
+    cover_half = parsed_page.css("//[@class='left']/img/@src")
     "#{@base_url}#{cover_half}"
   end
 
@@ -35,18 +35,6 @@ attr_reader :writerupdate, :artistupdate, :publisherupdate, :descriptionupdate, 
     end
     artist
   end
-
-  # def publisher(parsed_page)
-  #   if parsed_page.css("//[@class='left']/span[4]/a/text()").to_s == ''
-  #     if parsed_page.css("//[@class='left']/span[3]/a/text()").to_s == ''
-  #       pub = parsed_page.css("//[@class='left']/span[1]/a/text()")
-  #     else
-  #       pub = parsed_page.css("//[@class='left']/span[2]/a/text()")
-  #     end
-  #   else pub = parsed_page.css("//[@class='left']/span[3]/a/text()")
-  #   end
-  #   pub
-  # end
 
   def description(parsed_page)
     if parsed_page.css("//[@class='clear']/[@itemprop]/text()").length == 0

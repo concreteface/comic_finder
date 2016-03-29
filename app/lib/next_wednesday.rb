@@ -18,6 +18,3 @@ class Wednesday
   end
 end
 
-date = Wednesday.date_of_next
-puts date
-

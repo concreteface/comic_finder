@@ -52,13 +52,4 @@ class ComicList
     end
     publishers
   end
- 
 end
-
-
-# date = Date.parse('jan 27 2016')
-# # cl = ComicList.new("#{date.year}-#{date.month}-#{date.day}")
-# cl = ComicList.new('2016-03-23')
-# # # ComicList.cover_url('/comic-books/reviews/vertigo/clean-room/5')
-# puts cl.publishers.length
-# puts cl.artist(cl.pages[42])
