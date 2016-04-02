@@ -20,6 +20,12 @@ Future development plans include *a lot* of styling, and some sort of user syste
 ___
 `git clone https://github.com/concreteface/comic_finder.git`
 
+`cd comic_finder`
+
 `bundle install`
 
 `rake db:create`
+
+`ruby server.rb`
+
+Point your browser to `localhost:4567`
