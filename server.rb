@@ -71,7 +71,7 @@ get '/issues/:id' do
   @issue = Issue.find(params[:id])
   @date = @issue.release_date
   @updater = IssueUpdater.new(params[:id])
-  if @issue.image_url.nil?
+  if @issue.image_url.nil? || @issue.image_url == "http://comicbookroundup.com"
     @issue.update(writers: @updater.writerupdate, artist: @updater.artistupdate, description: @updater.descriptionupdate, image_url: @updater.cover_urlupdate)
   end
   erb :show
