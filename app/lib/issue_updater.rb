@@ -14,7 +14,7 @@ class IssueUpdater
   def cover_url(parsed_page)
     cover_at = ''
     cover_half = parsed_page.css("//[@class='left']/img/@src")
-    if cover_half.to_s.include? 'previewsworld'
+    if cover_half.to_s.include?('previewsworld') || cover_half.to_s.include?('comixology') || cover_half.to_s.include?('bulletin')
       cover_at = cover_half
     else
       cover_at = "#{@base_url}#{cover_half}"
