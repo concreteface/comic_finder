@@ -53,3 +53,7 @@ class ComicList
     publishers
   end
 end
+
+# list = ComicList.new('2016-04-06')
+# puts list.find_titles
+# s

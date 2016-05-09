@@ -1,5 +1,5 @@
 class IssueUpdater
-attr_reader :writerupdate, :artistupdate, :publisherupdate, :descriptionupdate, :cover_urlupdate, :parsed_page
+  attr_reader :writerupdate, :artistupdate, :publisherupdate, :descriptionupdate, :cover_urlupdate, :parsed_page
   def initialize(id)
     @issue = Issue.find(id)
     @base_url='http://comicbookroundup.com'
@@ -12,8 +12,14 @@ attr_reader :writerupdate, :artistupdate, :publisherupdate, :descriptionupdate, 
   end
 
   def cover_url(parsed_page)
+    cover_at = ''
     cover_half = parsed_page.css("//[@class='left']/img/@src")
-    "#{@base_url}#{cover_half}"
+    if cover_half.to_s.include? 'previewsworld'
+      cover_at = cover_half
+    else
+      cover_at = "#{@base_url}#{cover_half}"
+    end
+    cover_at
   end
 
   def writer(parsed_page)

@@ -64,6 +64,7 @@ get '/issues' do
   else @message = "Please enter a valid date"
   end
   @issues = Issue.where(release_date: @date).order(order(params))
+  ActiveRecord::Base.clear_active_connections!
   erb :index
 end
 
@@ -71,9 +72,10 @@ get '/issues/:id' do
   @issue = Issue.find(params[:id])
   @date = @issue.release_date
   @updater = IssueUpdater.new(params[:id])
-  if @issue.image_url.nil? || @issue.image_url == "http://comicbookroundup.com"
+  if @issue.image_url.nil? || @issue.image_url == "http://comicbookroundup.com" || @issue.image_url.include?('comhttp')
     @issue.update(writers: @updater.writerupdate, artist: @updater.artistupdate, description: @updater.descriptionupdate, image_url: @updater.cover_urlupdate)
   end
+  ActiveRecord::Base.clear_active_connections!
   erb :show
 end
 
