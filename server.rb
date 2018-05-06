@@ -13,33 +13,7 @@ include Order
 
 set :views, File.join(File.dirname(__FILE__), "app", "views")
 
-configure :development do
-  set :db_config, { dbname: "comics_development" }
-end
 
-# configure :test do
-#   set :db_config, { dbname: "comics_finder_test" }
-# end
-
-configure :production do
-  uri = URI.parse(ENV["DATABASE_URL"])
-  set :db_config, {
-    host: uri.host,
-    port: uri.port,
-    dbname: uri.path.delete('/'),
-    user: uri.user,
-    password: uri.password
-  }
-end
-
-def db_connection
-  begin
-    connection = PG.connect(settings.db_config)
-    yield(connection)
-  ensure
-    connection.close
-  end
-end
 
 Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
   require file
