@@ -13,7 +13,11 @@ class IssueUpdater
 
   def cover_url(parsed_page)
     cover_at = ''
-    cover_half = parsed_page.css("//[@class='left']/img/@src")
+    if parsed_page.css("//[@class='left']/img/@src").empty? || parsed_page.css("//[@class='left']/img/@src").nil?
+      cover_half = parsed_page.css("//[@class='left']/a/img/@src")
+    else
+      cover_half = parsed_page.css("//[@class='left']/img/@src")
+    end
     if cover_half.to_s.include?('previewsworld') || cover_half.to_s.include?('comixology') || cover_half.to_s.include?('bulletin')
       cover_at = cover_half
     else
